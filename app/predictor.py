@@ -24,6 +24,7 @@ class Predictor():
 
         # load the model for the captioning prediction
         model = load_model("./model/model.h5")
+        model.load_weights("./model/model_weights.h5")
 
         # load ResNet model (pretrained)
         resnet = ResNet50(include_top=False, weights="imagenet", input_shape=(224,224,3), pooling="avg")
