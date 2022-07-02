@@ -1,4 +1,5 @@
 import numpy as np
+import os
 from IPython.display import Image, display
 import pickle
 from tensorflow.keras.applications import ResNet50
@@ -7,6 +8,7 @@ from tensorflow.keras.utils import load_img, img_to_array
 from keras.preprocessing import image
 # from keras.preprocessing.sequence import pad_sequences
 from keras_preprocessing.sequence import pad_sequences
+from fastapi.responses import FileResponse
 
 
 MAX_LEN = 40
@@ -19,8 +21,8 @@ with open('./vocab/i2w.pickle', 'rb') as handle:
 
 class Predictor():
 
-    def predict(self, test):
-        print(test)
+    def predict(self, image_name):
+        
 
         # load the model for the captioning prediction
         model = load_model("./model/model.h5")
@@ -46,7 +48,8 @@ class Predictor():
 
 
         # test with a specific image
-        img = "./flickr8k/Images/1453366750_6e8cf601bf.jpg"
+        # img = "./flickr8k/Images/1453366750_6e8cf601bf.jpg"
+        img = "./flickr8k/Images/" + image_name
         test_img = get_encoding(resnet, img)
 
         # get prediction
@@ -68,8 +71,11 @@ class Predictor():
         caption = caption.replace("laden", "")
         caption = caption.replace("mulch", "")
 
-
         z = Image(filename=img)
         display(z)
 
         print(caption)
+        print(image_name)
+
+        
+        return caption, image_name

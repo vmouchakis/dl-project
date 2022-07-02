@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/style.css') }}" />
-<title>Neo App</title>
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/style.css') }}" /> -->
+<title>Image Captioning App</title>
 <div>
     <h1>
         Deep Learning
@@ -12,7 +12,7 @@
 <div>
     <form method="post">
         <label for="image">Choose image:</label>
-        <input type="file" id="image" name="image" accept="image/*">
+        <input type="file" id="image" name="image" accept="image/*" onchange="readURL(this);">
 
         <input type="submit">
     </form>
@@ -20,4 +20,10 @@
 
 <div id="data-table" style="height:500px; overflow-y: auto; display: inline-block;">
 {{data|safe}}
+{{request}}
+<!-- <img src="{{image}}"> -->
+{% if image %}
+    <img src="{{ url_for('static', path=image) }}">
+{% endif %}
+
 </div>
