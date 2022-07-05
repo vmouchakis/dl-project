@@ -1,3 +1,4 @@
+from jinja2 import ModuleLoader
 import numpy as np
 import os
 from IPython.display import Image, display
@@ -6,6 +7,7 @@ from tensorflow.keras.applications import ResNet50
 from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import load_img, img_to_array
 from keras.preprocessing import image
+from keras.models import model_from_json
 # from keras.preprocessing.sequence import pad_sequences
 from keras_preprocessing.sequence import pad_sequences
 from fastapi.responses import FileResponse
@@ -25,8 +27,14 @@ class Predictor():
         
 
         # load the model for the captioning prediction
-        model = load_model("./model/model.h5")
-        model.load_weights("./model/model_weights.h5")
+        json_file = open('./model/checkpoint/model.json', 'r')
+        loaded_model_json = json_file.read()
+        json_file.close()
+        model = model_from_json(loaded_model_json)
+        # load weights into new model
+        model.load_weights("./model/checkpoint/model.h5")
+        print("Loaded model from disk")
+        model.compile(loss='categorical_crossentropy', optimizer='RMSprop', metrics=['accuracy'])
 
         # load ResNet model (pretrained)
         resnet = ResNet50(include_top=False, weights="imagenet", input_shape=(224,224,3), pooling="avg")
@@ -70,6 +78,8 @@ class Predictor():
         caption = predict_captions(test_img)
         caption = caption.replace("laden", "")
         caption = caption.replace("mulch", "")
+        caption = caption.replace("on-lookers", "")
+        caption = caption.replace("speaks", "")
 
         z = Image(filename=img)
         display(z)
