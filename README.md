@@ -45,7 +45,7 @@ The application will run on the following [link](http://localhost:8000/).
 
 * Inside the `vocab` directory there are the the files the contain the dictionaries with the vocabulary.
 
-### The directory structure of the app is:
+### The directory structure of the app is (`dir-structure.txt`):
 ```
     dl-project
 ├──     app
