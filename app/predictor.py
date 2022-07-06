@@ -6,6 +6,8 @@ import pickle
 from tensorflow.keras.applications import ResNet50
 from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import load_img, img_to_array
+from keras.backend import manual_variable_initialization 
+manual_variable_initialization(True)
 from keras.preprocessing import image
 from keras.models import model_from_json
 # from keras.preprocessing.sequence import pad_sequences
@@ -27,6 +29,8 @@ class Predictor():
         
 
         # load the model for the captioning prediction
+
+        # 1st way:
         json_file = open('./model/checkpoint/model.json', 'r')
         loaded_model_json = json_file.read()
         json_file.close()
@@ -34,6 +38,11 @@ class Predictor():
         # load weights into new model
         model.load_weights("./model/checkpoint/model.h5")
         print("Loaded model from disk")
+
+        # 2nd way:
+        # model = load_weights("./model/checkpoint/model_weights.h5")
+        # print("Model loaded.")
+
         model.compile(loss='categorical_crossentropy', optimizer='RMSprop', metrics=['accuracy'])
 
         # load ResNet model (pretrained)
@@ -80,6 +89,7 @@ class Predictor():
         caption = caption.replace("mulch", "")
         caption = caption.replace("on-lookers", "")
         caption = caption.replace("speaks", "")
+        caption = caption.replace("like", "")
 
         z = Image(filename=img)
         display(z)

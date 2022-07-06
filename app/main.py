@@ -38,12 +38,18 @@ async def get_caption(request: Request):
 
 
 @app.post("/")
-async def get_caption(request: Request, image: str = Form(...)):
+async def get_caption(request: Request, image: str = Form(default="")):
     p = Predictor()
-    caption, img = p.predict(image)
-    print(img)
-    image_path = "/images/"+img
-    # image_path = f"{{ url_for(static, path=/images/{img}) }}"
-    # image_path = image_path.encode("Latin-1").decode("utf-8")
-    print(image_path)
-    return templates.TemplateResponse("page.html", {"request": request, "data": caption, "image": image_path})
+
+    if image == "":
+        response = "No image given."
+        return templates.TemplateResponse("page.html", {"request": request, "data": response})
+    else:
+        caption, img = p.predict(image)
+        print(img)
+        image_path = "/images/"+img
+        # image_path = f"{{ url_for(static, path=/images/{img}) }}"
+        # image_path = image_path.encode("Latin-1").decode("utf-8")
+        print(image_path)
+        return templates.TemplateResponse("page.html", {"request": request, "data": caption, "image": image_path})
+
