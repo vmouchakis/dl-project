@@ -39,7 +39,9 @@ uvicorn app.main:app
 
 The application will run on the following [link](http://localhost:8000/).
 
-* Images for captioning must be in the `static/images` directory.
+* It is necessary the folder `flickr8k` from the Google Drive to be downloaded, it contains all the images.
+
+* Images for captioning must be in the `static/images` directory. Initially, they are inside the `flickr8k` folder in Google Drive. Images from any other source should be in `.jpg` format.
 
 * Inside the `model` directory, there are the `checkpoint` directory storing the pretarained model, and the `dataset` directory storing the files needed for training.
 
