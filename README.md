@@ -1,5 +1,5 @@
 # This is a simple application to generate captions for images.
-#### Project of the Deep Learning course of the MSc in Data Science, NCSR-University of Peloponnese 
+#### Project of the Deep Learning course of the MSc in Data Science, NCSR-University of Peloponnese.
 
 ### Technologies:
     - Python
@@ -10,7 +10,7 @@
     - FastApi
     - Flickr8k dataset
 
-### Here is the source code alongside the dataset and the saved files used in training: [Google Drive link](https://drive.google.com/drive/u/3/folders/1YlFUuwD4ea6z_nkZrA8xsmXH2RAkaBMZ)
+### Here is the source code alongside the dataset and the saved files used in training: [Google Drive link](https://drive.google.com/drive/u/3/folders/1YlFUuwD4ea6z_nkZrA8xsmXH2RAkaBMZ).
 
 To use this application please copy and paste the following commands:
 ```
@@ -39,8 +39,39 @@ uvicorn app.main:app
 
 The application will run on the following [link](http://localhost:8000/).
 
-* Images must be in the `static/images` directory
+* Images for captioning must be in the `static/images` directory.
 
 * Inside the `model` directory, there are the `checkpoint` directory storing the pretarained model, and the `dataset` directory storing the files needed for training.
 
 * Inside the `vocab` directory there are the the files the contain the dictionaries with the vocabulary.
+
+### The directory structure of the app is:
+```
+    dl-project
+├──     app
+│        ├── main.py
+│        ├── predictor.py
+├── dir-structure.txt
+├──     flickr8k
+│        ├── flickr8ktextfiles
+│        ├── Flickr_TextData
+│        ├── Images
+│        ├── model_weights.h5
+│        └── train_encoded_images.p
+├── model
+│        ├── checkpoint
+│        ├── dataset
+│        └── image_captioning.ipynb
+├── README.md
+├── requirements.txt
+├──     static
+│        ├── css
+│        └── images
+├── templates
+│        └── page.html
+└── vocab
+    ├── i2w.pickle
+    └── w2i.pickle
+
+
+```

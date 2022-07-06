@@ -1,0 +1,26 @@
+    dl-project
+├──     app
+│        ├── main.py
+│        ├── predictor.py
+├── dir-structure.txt
+├──     flickr8k
+│        ├── flickr8ktextfiles
+│        ├── Flickr_TextData
+│        ├── Images
+│        ├── model_weights.h5
+│        └── train_encoded_images.p
+├── model
+│        ├── checkpoint
+│        ├── dataset
+│        └── image_captioning.ipynb
+├── README.md
+├── requirements.txt
+├──     static
+│        ├── css
+│        └── images
+├── templates
+│        └── page.html
+└── vocab
+    ├── i2w.pickle
+    └── w2i.pickle
+
