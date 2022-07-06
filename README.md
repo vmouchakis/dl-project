@@ -1,7 +1,16 @@
 # This is a simple application to generate captions for images.
 #### Project of the Deep Learning course of the MSc in Data Science, NCSR-University of Peloponnese 
 
-- [Google Drive link](https://drive.google.com/drive/u/3/folders/1YlFUuwD4ea6z_nkZrA8xsmXH2RAkaBMZ)
+### Technologies:
+    - Python
+    - Virtualenv
+    - Pip
+    - Tensorflow
+    - Keras
+    - FastApi
+    - Flickr8k dataset
+
+### Here is the source code alongside the dataset and the saved files used in training: [Google Drive link](https://drive.google.com/drive/u/3/folders/1YlFUuwD4ea6z_nkZrA8xsmXH2RAkaBMZ)
 
 To use this application please copy and paste the following commands:
 ```
