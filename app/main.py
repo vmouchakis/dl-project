@@ -34,7 +34,7 @@ templates = Jinja2Templates(directory="templates", autoescape=False)
 @app.get("/")
 async def get_caption(request: Request):
     data = ""
-    return templates.TemplateResponse("page.html", {"request": request, "data": "Hello word"})
+    return templates.TemplateResponse("page.html", {"request": request, "data": data})
 
 
 @app.post("/")
