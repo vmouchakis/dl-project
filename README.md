@@ -48,7 +48,7 @@ The application will run on the following [link](http://localhost:8000/).
 
 * Inside the `model` directory, there are the `checkpoint` directory storing the pretrained model, and the `dataset` directory storing the files needed for training.
 
-* Inside the `vocab` directory there are the files thatS contain the dictionaries with the vocabulary.
+* Inside the `vocab` directory there are the files that contain the dictionaries with the vocabulary.
 
 ### The directory structure of the app is (`dir-structure.txt`):
 ```
