@@ -28,9 +28,12 @@ source venv/bin/activate
 
 # install the required python packages
 pip3 install -r requirements.txt
+
+# download `flickr8k` folder from Google Drive
 ```
 
-Before running the application, the notebook `image_captioning.ipynb` should be used to generate the necessary files.
+Before running the application, the notebook `image_captioning.ipynb` should be used to generate the necessary files. Not a must, as the dataset files are already in this repo.
+
 
 To run the application copy the following command
 ```
@@ -39,28 +42,26 @@ uvicorn app.main:app
 
 The application will run on the following [link](http://localhost:8000/).
 
-* It is necessary the folder `flickr8k` from the Google Drive to be downloaded, it contains all the images.
+* It is necessary the folder `flickr8k` from the Google Drive to be downloaded, it contains all the images needed for training.
 
-* Images for captioning must be in the `static/images` directory. Initially, they are inside the `flickr8k` folder in Google Drive. Images from any other source should be in `.jpg` format.
+* Images for captioning must be in the `static/images` directory. Initially, they are inside the `flickr8k` folder in Google Drive. Images from any other source should be in `.jpg` format and saved in the `static/images` directory.
 
-* Inside the `model` directory, there are the `checkpoint` directory storing the pretarained model, and the `dataset` directory storing the files needed for training.
+* Inside the `model` directory, there are the `checkpoint` directory storing the pretrained model, and the `dataset` directory storing the files needed for training.
 
-* Inside the `vocab` directory there are the the files the contain the dictionaries with the vocabulary.
+* Inside the `vocab` directory there are the files thatS contain the dictionaries with the vocabulary.
 
 ### The directory structure of the app is (`dir-structure.txt`):
 ```
     dl-project
 ├──     app
-│        ├── main.py
-│        ├── predictor.py
+│        ├── main.py (runs the app)
+│        ├── predictor.py (captions given images)
 ├── dir-structure.txt
-├──     flickr8k
+├──     flickr8k 
 │        ├── flickr8ktextfiles
 │        ├── Flickr_TextData
-│        ├── Images
-│        ├── model_weights.h5
-│        └── train_encoded_images.p
-├── model
+│        ├── Images (contains all the available images)
+├──     model
 │        ├── checkpoint
 │        ├── dataset
 │        └── image_captioning.ipynb
@@ -70,7 +71,7 @@ The application will run on the following [link](http://localhost:8000/).
 │        ├── css
 │        └── images
 ├── templates
-│        └── page.html
+│        └── page.html (page used from fastapi to use the app)
 └── vocab
     ├── i2w.pickle
     └── w2i.pickle
