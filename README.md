@@ -78,3 +78,5 @@ The application will run on the following [link](http://localhost:8000/).
 
 
 ```
+
+## Also please make sure that the weights of layers actually change after you load a trained model. The proper way is to compile the model first and then call model.load - frequently people compile model after loading the weights and that reinitializes them
