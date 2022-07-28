@@ -81,3 +81,4 @@ The application will run on the following [link](http://localhost:8000/).
 
 ## Also please make sure that the weights of layers actually change after you load a trained model. The proper way is to compile the model first and then call model.load - frequently people compile model after loading the weights and that reinitializes them
 https://github.com/keras-team/keras/issues/8149
+https://stackoverflow.com/questions/42449635/why-does-my-keras-neural-network-model-output-different-values-on-a-different-ma
